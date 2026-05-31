@@ -2,14 +2,25 @@ import { motion } from 'motion/react';
 
 const skills = [
   'Python',
-  'Django/Flask',
-  'AI/ML',
+  'Django',
+  'Flask',
   'React.js',
-  'HTML',
-  'CSS',
+  'REST API',
+  'PostgreSQL',
+  'MySQL',
+  'LangChain',
+  'RAG',
+  'Gemini API',
+  'SQLAlchemy',
+  'HTML5',
+  'CSS3',
   'JavaScript',
-  'MY SQL',
-  'Git/GitHub',
+  'Git / GitHub',
+  'Vercel',
+  'Railway',
+  'Netlify',
+  'Machine Learning',
+  'NLP',
 ];
 
 export function About() {
@@ -28,12 +39,31 @@ export function About() {
           <div className="w-20 h-1 bg-blue-600 mx-auto mb-12"></div>
 
           <p className="text-lg md:text-xl text-gray-700 text-center leading-relaxed mb-12 max-w-3xl mx-auto">
-            I'm a passionate Full Stack Developer specializing in Python and modern web technologies. 
-            With expertise in Django, Flask, and React.js, I build scalable, efficient, and user-friendly 
-            applications. Currently enhancing my skills through a Python Full Stack Developer course at 
-            QSpiders and exploring cutting-edge AI technologies. I'm driven by solving complex problems 
-            and creating impactful digital solutions.
+            B.Tech CSE graduate from SRM Institute with a CGPA of 8.16, focused on Python full stack
+            and GenAI development. I have built 8+ production-ready applications with 4 live projects
+            deployed on Railway, Vercel, and Netlify. I enjoy turning ideas into practical, scalable
+            products with clean code, API design, and thoughtful UX.
           </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-14">
+            {[
+              'Immediate joiner for Python, Backend, and GenAI roles',
+              '4 live deployed projects with real users and deployment experience',
+              'Strong foundation in Django, Flask, React, LangChain, and RAG',
+            ].map((item, index) => (
+              <motion.div
+                key={item}
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.35, delay: index * 0.08 }}
+                className="rounded-2xl border border-blue-100 bg-gradient-to-br from-blue-50 to-white px-5 py-4 text-center text-gray-700 shadow-sm"
+              >
+                {item}
+              </motion.div>
+            ))}
+          </div>
+
           <h2 className="text-4xl md:text-5xl text-center mb-6 text-gray-900"> Skills</h2>
           <div className="w-20 h-1 bg-blue-600 mx-auto mb-12"></div>
           <div className="flex flex-wrap gap-3 justify-center">

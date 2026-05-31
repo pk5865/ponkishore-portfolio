@@ -3,16 +3,16 @@ import { Award } from 'lucide-react';
 
 const certifications = [
   {
-    title: 'Instagram Clone Using HTML & CSS',
-    issuer: 'Microsoft',
+    title: 'Generative AI and LLM Application Development Bootcamp',
+    issuer: 'Udemy',
+  },
+  {
+    title: 'Python Full Stack Development',
+    issuer: 'JSpiders, Chennai',
   },
   {
     title: 'Data Visualization using Python & Seaborn',
-    issuer: 'Microsoft',
-  },
-  {
-    title: 'Federated Learning Research Paper',
-    issuer: 'ICCMAMT (Published)',
+    issuer: 'Microsoft Learn Student Ambassador',
   },
 ];
 

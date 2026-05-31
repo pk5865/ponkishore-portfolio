@@ -1,25 +1,35 @@
 import { motion } from 'motion/react';
-import { Code, Server, Smartphone, Database } from 'lucide-react';
+import { Bot, Code, Database, Server, Sparkles, Workflow } from 'lucide-react';
 
-const services = [
+const roles = [
   {
-    title: 'Full Stack Web Development',
-    description: 'End-to-end web application development using modern frameworks and technologies, from frontend to backend.',
+    title: 'Python Full Stack Developer',
+    description: 'Builds full stack apps with Django, Flask, React, REST APIs, SQL, and modern deployment workflows.',
     icon: Code,
   },
   {
-    title: 'Backend Development',
-    description: 'Robust server-side applications with Django and Flask, including RESTful APIs and database management.',
+    title: 'Backend Developer',
+    description: 'Creates secure APIs, database schemas, authentication flows, and production-ready server logic.',
     icon: Server,
   },
   {
-    title: 'Frontend Development',
-    description: 'Responsive and interactive user interfaces built with React.js, HTML, CSS, and modern JavaScript.',
-    icon: Smartphone,
+    title: 'GenAI Developer',
+    description: 'Works with LangChain, RAG, Gemini API, and multi-source ingestion for intelligent applications.',
+    icon: Sparkles,
   },
   {
-    title: 'Python Development',
-    description: 'Custom Python solutions for automation, data analysis, machine learning, and web scraping applications.',
+    title: 'AI / ML Developer',
+    description: 'Applies NLP, machine learning, feature engineering, and model-driven workflows to real problems.',
+    icon: Bot,
+  },
+  {
+    title: 'React Developer',
+    description: 'Builds responsive, modern interfaces with reusable components and clean UX patterns.',
+    icon: Workflow,
+  },
+  {
+    title: 'Data & SQL Developer',
+    description: 'Designs efficient relational data models and query flows using PostgreSQL, MySQL, and SQLAlchemy.',
     icon: Database,
   },
 ];
@@ -35,29 +45,29 @@ export function Services() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl md:text-5xl text-center mb-6 text-gray-900">
-            Services
+            Roles I Can Take
           </h2>
           <div className="w-20 h-1 bg-blue-600 mx-auto mb-16"></div>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {services.map((service, index) => (
+          {roles.map((role, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
               className="bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-blue-100 hover:border-blue-300 group"
             >
               <div className="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <service.icon className="text-white" size={32} />
+                <role.icon className="text-white" size={32} />
               </div>
               <h3 className="text-2xl mb-4 text-gray-900">
-                {service.title}
+                {role.title}
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                {service.description}
+                {role.description}
               </p>
             </motion.div>
           ))}

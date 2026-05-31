@@ -3,12 +3,12 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Download, Eye, Mail } from 'lucide-react';
 
 const jobRoles = [
-  'Python Developer',
-  'AI Full Stack Developer',
-  'React Developer',
+  'Python Full Stack Developer',
+  'GenAI Developer',
+  'Backend Developer',
+  'AI / ML Developer',
   'Django / Flask Developer',
-  'Web Developer',
-  'Back-End Developer',
+  'React Developer',
   'Software Developer',
 ];
 
@@ -31,7 +31,7 @@ export function Hero() {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 py-20 bg-gradient-to-br from-white via-blue-50/30 to-white">
+    <section className="min-h-screen flex items-center justify-center px-4 py-20 bg-gradient-to-br from-white via-blue-50/40 to-white">
       <div className="text-center max-w-4xl mx-auto">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
@@ -39,8 +39,18 @@ export function Hero() {
           transition={{ duration: 0.6 }}
           className="text-5xl md:text-7xl mb-8 text-gray-900"
         >
-          Hi, I'm <span className="text-blue-600">Pon Kishore.K</span>
+          Hi, I'm <span className="text-blue-600">Pon Kishore K</span>
         </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="mx-auto mb-4 max-w-3xl text-lg md:text-xl text-gray-600 leading-relaxed"
+        >
+          I build production-ready Python full stack and GenAI applications with Django,
+          Flask, React, LangChain, RAG, PostgreSQL, MySQL, and real-world deployment experience.
+        </motion.p>
 
         <div className="h-20 md:h-24 mb-12 flex items-center justify-center">
           <AnimatePresence mode="wait">
@@ -78,7 +88,7 @@ export function Hero() {
             Contact Me
           </button>
           <a
-            href="#"
+            href="/resume/Pon_Kishore_2026.pdf"
             download
             className="px-8 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2 min-w-[180px] justify-center"
           >

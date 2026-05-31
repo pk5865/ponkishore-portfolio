@@ -1,161 +1,212 @@
 import { motion } from 'motion/react';
 import { Github, ExternalLink } from 'lucide-react';
-import { useRef, useEffect, useState } from 'react';
 
-const projects = [
+type Project = {
+  title: string;
+  description: string;
+  tech: string[];
+  image: string;
+  liveUrl?: string;
+  githubUrl: string;
+};
+
+const featuredProjects: Project[] = [
   {
-    title: 'Enhancing Pre-Owned Car Price Prediction Through Federated Learning',
+    title: 'Study Interviewer AI',
     description:
-      'Used federated learning to predict car prices while keeping data private.',
-    tech: ['Python', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Machine Learning', 'Predictive Modeling'],
-    image: 'https://images.unsplash.com/photo-1591453089816-0fbb971b454c',
+      'AI platform that generates interview questions from PDFs, YouTube videos, and webpages using LangChain, RAG, and Gemini API.',
+    tech: ['Flask', 'React', 'LangChain', 'PostgreSQL', 'Gemini API', 'Railway'],
+    image: '/projects/studyinterviewer-ai.png',
+    liveUrl: 'https://studyinterviewer-frontend-production.up.railway.app',
+    githubUrl: 'https://github.com/pk5865/studyinterviewer-ai',
   },
   {
-    title: 'Music Player Web Application ',
+    title: 'AI Work Analyze',
     description:
-      'Built a full-stack music player using React.js and Django REST Framework.',
-    tech: ['Python','React', 'Django REST Framework.'],
-    image: 'https://images.unsplash.com/photo-1703115015343-81b498a8c080',
+      'LangChain AI productivity planner that detects behavioral patterns across daily logs with Django REST API and Vercel deployment.',
+    tech: ['Django', 'React', 'LangChain', 'RAG', 'MySQL', 'Vercel'],
+    image: '/projects/ai-work-analyze.png',
+    liveUrl: 'https://ai-work-analyze-clean.vercel.app',
+    githubUrl: 'https://github.com/pk5865/AI-WORK-ANALYZE',
   },
   {
-    title: 'Portfolio Website',
+    title: 'Resume Analyzer AI',
     description:
-      'A modern portfolio website built using React.js.',
-    tech: ['React.js', 'TypeScript'],
-    image: 'https://images.unsplash.com/photo-1695634621145-9133286e0247',
+      'Semantic resume analyzer using LangChain RAG and FAISS that generates ATS scores and skill gap reports.',
+    tech: ['Flask', 'React', 'LangChain', 'FAISS', 'ChromaDB', 'Vercel'],
+    image: '/projects/resume-analyzer.png',
+    liveUrl: 'https://resume-optimizer-ai-pk5865s-projects.vercel.app',
+    githubUrl: 'https://github.com/pk5865/resume-optimizer-ai',
   },
   {
-    title: 'AI Chatbot',
+    title: 'Web Music Player',
     description:
-      'Implemented a web-based chat interface to process user input and generate automated responses..',
-    tech: ['Python', 'Django', 'Natural Language Processing'],
-    image: 'https://images.unsplash.com/photo-1661187259792-d0e16bf86d31',
-  },
-  {
-    title: 'Blog News Website',
-    description:
-      'A Django-based blog platform.',
-    tech: ['Python', 'Django'],
-    image: 'https://images.unsplash.com/photo-1638342863994-ae4eee256688',
-  },
-  {
-    title: 'Expenses Tracker',
-    description:
-      'An app that tracks income and expenses and shows charts and graphs to analyze spending by category.',
-    tech: ['Python', 'Flask','SQLite'],
-    image: 'https://images.unsplash.com/photo-1680251590844-53784815ded4',
-  },
-  {
-    title: 'To-Do List Application',
-    description:
-      'A task management app.',
-    tech: ['Python'],
-    image: 'https://images.unsplash.com/photo-1759661937582-0ccd5dacf20f',
-  },
-  {
-    title: 'Password Generator',
-    description:
-      'A secure password generator.',
-    tech: ['Python'],
-    image: 'https://images.unsplash.com/photo-1768839722988-91767bb82b10',
-  },
-  {
-    title: 'Stone Paper Scissor Game',
-    description:
-      'An interactive game.',
-    tech: ['Python'],
-    image: 'https://images.unsplash.com/photo-1614032686099-e648d6dea9b3',
-  },
-  {
-    title: 'Calculator',
-    description:
-      'A basic calculator.',
-    tech: ['Python'],
-    image: 'https://images.unsplash.com/photo-1653361860636-36f2fb89eab9',
+      'Full stack music streaming platform with JWT authentication, real-time playback, and playlist management.',
+    tech: ['Django', 'React', 'MySQL', 'JWT', 'Netlify'],
+    image: 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1200&q=80',
+    liveUrl: 'https://pk-music-player.netlify.app',
+    githubUrl: 'https://github.com/pk5865/music-player',
   },
 ];
 
-export function Projects() {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [isAutoScrolling, setIsAutoScrolling] = useState(true);
+const moreProjects: Project[] = [
+  {
+    title: 'Portfolio Website',
+    description: 'Personal portfolio built with React and Vite to showcase projects, skills, and resume links.',
+    tech: ['React', 'TypeScript', 'Vite'],
+    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80',
+    liveUrl: 'https://ponkishore-portfolio.netlify.app',
+    githubUrl: 'https://github.com/pk5865/ponkishore-portfolio',
+  },
+  {
+    title: 'AI Chatbot',
+    description: 'A chatbot built with Python and NLP for user query handling and automated responses.',
+    tech: ['Python', 'Django', 'NLP'],
+    image: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=1200&q=80',
+    githubUrl: 'https://github.com/pk5865/AI-Chatbot',
+  },
+  {
+    title: 'Personal Blogging Platform',
+    description: 'Django-based blogging app with content management and authentication.',
+    tech: ['Python', 'Django', 'SQLite'],
+    image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80',
+    githubUrl: 'https://github.com/pk5865/Personal-Blogging-Platform',
+  },
+  {
+    title: 'Expense Tracker',
+    description: 'Expense tracker for adding, filtering, and visualizing spending with charts.',
+    tech: ['Python', 'Flask', 'SQLite'],
+    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80',
+    githubUrl: 'https://github.com/pk5865/expense-tracker',
+  },
+];
 
-  useEffect(() => {
-    const container = scrollContainerRef.current;
-    if (!container || !isAutoScrolling) return;
-
-    let scrollPosition = container.scrollLeft;
-    const scrollSpeed = 1.5;
-    const maxScroll = container.scrollWidth / 2;
-
-    const scroll = () => {
-      if (!isAutoScrolling) return;
-
-      scrollPosition += scrollSpeed;
-      if (scrollPosition >= maxScroll) {
-        scrollPosition = 0;
-      }
-      container.scrollLeft = scrollPosition;
-    };
-
-    const intervalId = setInterval(scroll, 30);
-    return () => clearInterval(intervalId);
-  }, [isAutoScrolling]);
+function ProjectCard({ project }: { project: Project }) {
+  const hasLiveDemo = Boolean(project.liveUrl);
 
   return (
-    <section id="projects" className="py-20 px-4 bg-gray-50">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl text-center mb-12 text-gray-900">
-          Projects
-        </h2>
+    <motion.article
+      whileHover={{ y: -6 }}
+      transition={{ duration: 0.25 }}
+      className="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-lg"
+    >
+      <div className="relative h-52 overflow-hidden bg-gray-100">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent" />
+      </div>
 
-        <div
-          ref={scrollContainerRef}
-          onMouseEnter={() => setIsAutoScrolling(false)}
-          onMouseLeave={() => setIsAutoScrolling(true)}
-          className="flex gap-6 overflow-x-auto pb-6 cursor-grab"
-        >
-          {[...projects, ...projects].map((project, index) => (
-            <motion.div
-              key={index}
-              className="min-w-[350px] bg-white rounded-2xl shadow-lg overflow-hidden"
+      <div className="p-6">
+        <div className="mb-3 flex items-center justify-between gap-3">
+          <h3 className="text-2xl font-semibold text-gray-900">{project.title}</h3>
+          {hasLiveDemo && (
+            <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700">
+              Live
+            </span>
+          )}
+        </div>
+
+        <p className="mb-5 text-sm leading-relaxed text-gray-600">
+          {project.description}
+        </p>
+
+        <div className="mb-5 flex flex-wrap gap-2">
+          {project.tech.map((tech) => (
+            <span
+              key={tech}
+              className="rounded-full bg-gray-100 px-3 py-1 text-xs text-gray-700"
             >
-              <img
-                src={project.image}
-                alt={project.title}
-                className="h-48 w-full object-cover"
-              />
-
-              <div className="p-6">
-                <h3 className="text-xl mb-2 text-gray-900">
-                  {project.title}
-                </h3>
-
-                <p className="text-sm text-gray-600 mb-4">
-                  {project.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tech.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex gap-3">
-                  <button className="flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg">
-                    <Github size={16} /> GitHub
-                  </button>
-                  <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg">
-                    <ExternalLink size={16} /> Live Demo
-                  </button>
-                </div>
-              </div>
-            </motion.div>
+              {tech}
+            </span>
           ))}
+        </div>
+
+        <div className="flex flex-wrap gap-3">
+          {project.liveUrl ? (
+            <>
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
+              >
+                <ExternalLink size={16} />
+                Live Demo
+              </a>
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl border border-gray-300 px-4 py-2 text-sm font-medium text-gray-800 transition-colors hover:border-gray-400 hover:bg-gray-50"
+              >
+                <Github size={16} />
+                Source Code
+              </a>
+            </>
+          ) : (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl bg-gray-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-gray-800"
+            >
+              <Github size={16} />
+              GitHub
+            </a>
+          )}
+        </div>
+      </div>
+    </motion.article>
+  );
+}
+
+export function Projects() {
+  return (
+    <section id="projects" className="bg-gray-50 px-4 py-20">
+      <div className="mx-auto max-w-7xl">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="mb-6 text-center text-4xl text-gray-900 md:text-5xl">
+            Projects
+          </h2>
+          <div className="mx-auto mb-12 h-1 w-20 bg-blue-600" />
+        </motion.div>
+
+        <div className="grid gap-8 md:grid-cols-2">
+          {featuredProjects.map((project) => (
+            <ProjectCard key={project.title} project={project} />
+          ))}
+        </div>
+
+        <div className="mt-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h3 className="mb-4 text-2xl text-gray-900 md:text-3xl">
+              More Projects
+            </h3>
+            <p className="mb-8 max-w-3xl text-gray-600">
+              Additional practice projects and earlier builds that show your consistency with Python,
+              Django, Flask, and front-end work.
+            </p>
+          </motion.div>
+
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {moreProjects.map((project) => (
+              <ProjectCard key={project.title} project={project} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

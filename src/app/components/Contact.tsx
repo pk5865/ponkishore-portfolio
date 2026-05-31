@@ -124,7 +124,7 @@ export function Contact() {
 
             <div className="space-y-4">
               <a
-                href="https://github.com"
+                href="https://github.com/pk5865"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-blue-300 group"
@@ -134,12 +134,12 @@ export function Contact() {
                 </div>
                 <div>
                   <div className="text-sm text-gray-500">GitHub</div>
-                  <div className="text-gray-900">@ponkishore</div>
+                  <div className="text-gray-900">github.com/pk5865</div>
                 </div>
               </a>
 
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/pon-kishore-k/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-blue-300 group"
@@ -149,12 +149,12 @@ export function Contact() {
                 </div>
                 <div>
                   <div className="text-sm text-gray-500">LinkedIn</div>
-                  <div className="text-gray-900">Pon Kishore K</div>
+                  <div className="text-gray-900">linkedin.com/in/pon-kishore-k</div>
                 </div>
               </a>
 
               <a
-                href="mailto:ponkishore@example.com"
+                href="mailto:kponkishore@gmail.com"
                 className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-blue-300 group"
               >
                 <div className="w-12 h-12 bg-red-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
@@ -162,7 +162,7 @@ export function Contact() {
                 </div>
                 <div>
                   <div className="text-sm text-gray-500">Email</div>
-                  <div className="text-gray-900">ponkishore@example.com</div>
+                  <div className="text-gray-900">kponkishore@gmail.com</div>
                 </div>
               </a>
             </div>
