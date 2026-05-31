@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Download, Eye, Mail } from 'lucide-react';
 
 const jobRoles = [
-  'Python Full Stack Developer',
-  'GenAI Developer',
-  'Backend Developer',
-  'AI / ML Developer',
-  'Django / Flask Developer',
+  'Full Stack Developer',
+  'Python Developer',
+  'AI / GenAI Developer',
   'React Developer',
+  'Django / Flask Developer',
+  'Backend Developer',
   'Software Developer',
 ];
 
@@ -31,28 +31,18 @@ export function Hero() {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 py-20 bg-gradient-to-br from-white via-blue-50/40 to-white">
-      <div className="text-center max-w-4xl mx-auto">
+    <section className="flex min-h-screen items-center justify-center bg-gradient-to-br from-white via-blue-50/30 to-white px-4 py-20">
+      <div className="mx-auto max-w-4xl text-center">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-5xl md:text-7xl mb-8 text-gray-900"
+          className="mb-8 text-5xl text-gray-900 md:text-7xl"
         >
           Hi, I'm <span className="text-blue-600">Pon Kishore K</span>
         </motion.h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          className="mx-auto mb-4 max-w-3xl text-lg md:text-xl text-gray-600 leading-relaxed"
-        >
-          I build production-ready Python full stack and GenAI applications with Django,
-          Flask, React, LangChain, RAG, PostgreSQL, MySQL, and real-world deployment experience.
-        </motion.p>
-
-        <div className="h-20 md:h-24 mb-12 flex items-center justify-center">
+        <div className="mb-12 flex h-20 items-center justify-center md:h-24">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentRoleIndex}
@@ -60,37 +50,49 @@ export function Hero() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 50 }}
               transition={{ duration: 0.5 }}
-              className="text-2xl md:text-4xl text-gray-600"
+              className="text-2xl text-gray-600 md:text-4xl"
             >
               {jobRoles[currentRoleIndex]}
             </motion.div>
           </AnimatePresence>
         </div>
 
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mx-auto mb-12 max-w-2xl text-base leading-relaxed text-gray-600 md:text-lg"
+        >
+          I build scalable web applications and AI-powered solutions using Python, Django, Flask,
+          React, LangChain, and modern deployment platforms.
+        </motion.p>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          className="flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <button
             onClick={() => scrollToSection('projects')}
-            className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2 min-w-[180px] justify-center"
+            className="flex min-w-[180px] items-center justify-center gap-2 rounded-lg bg-blue-600 px-8 py-3 text-white shadow-lg transition-colors hover:bg-blue-700 hover:shadow-xl"
           >
             <Eye size={20} />
             View Projects
           </button>
+
           <button
             onClick={() => scrollToSection('contact')}
-            className="px-8 py-3 bg-white text-blue-600 border-2 border-blue-600 rounded-lg hover:bg-blue-50 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2 min-w-[180px] justify-center"
+            className="flex min-w-[180px] items-center justify-center gap-2 rounded-lg border-2 border-blue-600 bg-white px-8 py-3 text-blue-600 shadow-lg transition-colors hover:bg-blue-50 hover:shadow-xl"
           >
             <Mail size={20} />
             Contact Me
           </button>
+
           <a
             href="/resume/Pon_Kishore_2026.pdf"
             download
-            className="px-8 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors shadow-lg hover:shadow-xl flex items-center gap-2 min-w-[180px] justify-center"
+            className="flex min-w-[180px] items-center justify-center gap-2 rounded-lg bg-gray-900 px-8 py-3 text-white shadow-lg transition-colors hover:bg-gray-800 hover:shadow-xl"
           >
             <Download size={20} />
             Download CV

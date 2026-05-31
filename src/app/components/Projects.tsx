@@ -52,7 +52,8 @@ const featuredProjects: Project[] = [
 const moreProjects: Project[] = [
   {
     title: 'Portfolio Website',
-    description: 'Personal portfolio built with React and Vite to showcase projects, skills, and resume links.',
+    description:
+      'Personal portfolio website built with React and Vite to showcase projects, skills, and resume links.',
     tech: ['React', 'TypeScript', 'Vite'],
     image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80',
     liveUrl: 'https://ponkishore-portfolio.netlify.app',
@@ -60,25 +61,62 @@ const moreProjects: Project[] = [
   },
   {
     title: 'AI Chatbot',
-    description: 'A chatbot built with Python and NLP for user query handling and automated responses.',
+    description:
+      'NLP-based chatbot for handling user queries with a simple and responsive interface.',
     tech: ['Python', 'Django', 'NLP'],
     image: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=1200&q=80',
     githubUrl: 'https://github.com/pk5865/AI-Chatbot',
   },
   {
     title: 'Personal Blogging Platform',
-    description: 'Django-based blogging app with content management and authentication.',
+    description:
+      'Django-based blogging app with content management and authentication features.',
     tech: ['Python', 'Django', 'SQLite'],
     image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80',
     githubUrl: 'https://github.com/pk5865/Personal-Blogging-Platform',
   },
   {
     title: 'Expense Tracker',
-    description: 'Expense tracker for adding, filtering, and visualizing spending with charts.',
+    description:
+      'Expense tracking app for adding, filtering, and visualizing spending with charts.',
     tech: ['Python', 'Flask', 'SQLite'],
     image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80',
     githubUrl: 'https://github.com/pk5865/expense-tracker',
   },
+  {
+    title: 'Stone Paper Scissor Game',
+    description:
+      'An interactive Rock Paper Scissor game with basic score tracking and replay flow.',
+    tech: ['Python'],
+    image: 'https://images.unsplash.com/photo-1614032686099-e648d6dea9b3?auto=format&fit=crop&w=1200&q=80',
+    githubUrl: 'https://github.com/pk5865/Stone-Paper-Scissor',
+  },
+  {
+    title: 'Password Generator',
+    description:
+      'A secure password generator that creates strong random passwords for different lengths.',
+    tech: ['Python'],
+    image: '/projects/password-generator.png',
+    githubUrl: 'https://github.com/pk5865/Pasword-generator',
+  },
+  {
+    title: 'To-Do List Application',
+    description:
+      'A simple task management app for adding, updating, completing, and deleting tasks.',
+    tech: ['Python'],
+    image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=1200&q=80',
+    githubUrl: 'https://github.com/pk5865/TO-DO-LIST-',
+  },
+
+  {
+    title: 'Instagram Clone',
+    description:
+      'A front-end clone project inspired by Instagram to practice layout and styling.',
+    tech: ['HTML', 'CSS'],
+    image: 'https://images.unsplash.com/photo-1517292987719-0369a794ec0f?auto=format&fit=crop&w=1200&q=80',
+    githubUrl: 'https://github.com/pk5865/INSTAGRAM-CLONE',
+  },
+
 ];
 
 function ProjectCard({ project }: { project: Project }) {
@@ -165,6 +203,8 @@ function ProjectCard({ project }: { project: Project }) {
 }
 
 export function Projects() {
+  const allProjects = [...featuredProjects, ...moreProjects];
+
   return (
     <section id="projects" className="bg-gray-50 px-4 py-20">
       <div className="mx-auto max-w-7xl">
@@ -180,33 +220,14 @@ export function Projects() {
           <div className="mx-auto mb-12 h-1 w-20 bg-blue-600" />
         </motion.div>
 
-        <div className="grid gap-8 md:grid-cols-2">
-          {featuredProjects.map((project) => (
-            <ProjectCard key={project.title} project={project} />
-          ))}
+        <div className="mb-8 rounded-2xl border border-blue-100 bg-blue-50 px-5 py-4 text-sm text-blue-900">
+          Live projects are shown first, followed by your other work. On desktop this displays as 3 cards per row.
         </div>
 
-        <div className="mt-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h3 className="mb-4 text-2xl text-gray-900 md:text-3xl">
-              More Projects
-            </h3>
-            <p className="mb-8 max-w-3xl text-gray-600">
-              Additional practice projects and earlier builds that show your consistency with Python,
-              Django, Flask, and front-end work.
-            </p>
-          </motion.div>
-
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {moreProjects.map((project) => (
-              <ProjectCard key={project.title} project={project} />
-            ))}
-          </div>
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {allProjects.map((project) => (
+            <ProjectCard key={project.title} project={project} />
+          ))}
         </div>
       </div>
     </section>

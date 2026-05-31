@@ -11,13 +11,14 @@ export function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission logic here
     console.log('Form submitted:', formData);
     alert('Thank you for your message! I will get back to you soon.');
     setFormData({ name: '', email: '', message: '' });
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -25,22 +26,21 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 px-4 bg-gradient-to-br from-gray-50 to-white">
-      <div className="max-w-4xl mx-auto">
+    <section id="contact" className="bg-gradient-to-br from-gray-50 to-white px-4 py-20">
+      <div className="mx-auto max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl text-center mb-6 text-gray-900">
+          <h2 className="mb-6 text-center text-4xl text-gray-900 md:text-5xl">
             Get In Touch
           </h2>
-          <div className="w-20 h-1 bg-blue-600 mx-auto mb-12"></div>
+          <div className="mx-auto mb-12 h-1 w-20 bg-blue-600"></div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Contact Form */}
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -49,7 +49,7 @@ export function Contact() {
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-gray-700 mb-2">
+                <label htmlFor="name" className="mb-2 block text-gray-700">
                   Name
                 </label>
                 <input
@@ -59,13 +59,13 @@ export function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                  className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-600"
                   placeholder="Your Name"
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-gray-700 mb-2">
+                <label htmlFor="email" className="mb-2 block text-gray-700">
                   Email
                 </label>
                 <input
@@ -75,13 +75,13 @@ export function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                  className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-600"
                   placeholder="your.email@example.com"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-gray-700 mb-2">
+                <label htmlFor="message" className="mb-2 block text-gray-700">
                   Message
                 </label>
                 <textarea
@@ -91,14 +91,14 @@ export function Contact() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent resize-none"
+                  className="w-full resize-none rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-600"
                   placeholder="Your message..."
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                className="flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 px-6 py-3 text-white shadow-lg transition-colors hover:bg-blue-700 hover:shadow-xl"
               >
                 <Send size={20} />
                 Send Message
@@ -106,7 +106,6 @@ export function Contact() {
             </form>
           </motion.div>
 
-          {/* Contact Info & Socials */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -114,12 +113,10 @@ export function Contact() {
             transition={{ duration: 0.6 }}
             className="flex flex-col justify-center"
           >
-            <h3 className="text-2xl mb-6 text-gray-900">
-              Let's Connect
-            </h3>
-            <p className="text-gray-600 mb-8 leading-relaxed">
-              I'm always interested in hearing about new projects and opportunities. 
-              Whether you have a question or just want to say hi, feel free to reach out!
+            <h3 className="mb-6 text-2xl text-gray-900">Let's Connect</h3>
+            <p className="mb-8 leading-relaxed text-gray-600">
+              I'm always open to new projects, internships, and collaboration opportunities.
+              If you have a question or want to work together, feel free to reach out.
             </p>
 
             <div className="space-y-4">
@@ -127,14 +124,14 @@ export function Contact() {
                 href="https://github.com/pk5865"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-blue-300 group"
+                className="group flex items-center gap-4 rounded-xl border border-gray-100 bg-white p-4 shadow-md transition-all duration-300 hover:border-blue-300 hover:shadow-lg"
               >
-                <div className="w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gray-900 transition-transform duration-300 group-hover:scale-110">
                   <Github className="text-white" size={24} />
                 </div>
                 <div>
                   <div className="text-sm text-gray-500">GitHub</div>
-                  <div className="text-gray-900">github.com/pk5865</div>
+                  <div className="text-gray-900">pk5865</div>
                 </div>
               </a>
 
@@ -142,22 +139,22 @@ export function Contact() {
                 href="https://www.linkedin.com/in/pon-kishore-k/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-blue-300 group"
+                className="group flex items-center gap-4 rounded-xl border border-gray-100 bg-white p-4 shadow-md transition-all duration-300 hover:border-blue-300 hover:shadow-lg"
               >
-                <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-600 transition-transform duration-300 group-hover:scale-110">
                   <Linkedin className="text-white" size={24} />
                 </div>
                 <div>
                   <div className="text-sm text-gray-500">LinkedIn</div>
-                  <div className="text-gray-900">linkedin.com/in/pon-kishore-k</div>
+                  <div className="text-gray-900">Pon Kishore K</div>
                 </div>
               </a>
 
               <a
                 href="mailto:kponkishore@gmail.com"
-                className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-blue-300 group"
+                className="group flex items-center gap-4 rounded-xl border border-gray-100 bg-white p-4 shadow-md transition-all duration-300 hover:border-blue-300 hover:shadow-lg"
               >
-                <div className="w-12 h-12 bg-red-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-red-500 transition-transform duration-300 group-hover:scale-110">
                   <Mail className="text-white" size={24} />
                 </div>
                 <div>
